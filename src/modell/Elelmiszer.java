@@ -1,6 +1,7 @@
 
 package modell;
 
+import java.io.Serializable;
 import java.text.Collator;
 import java.time.LocalDate;
 import java.time.Month;
@@ -25,13 +26,13 @@ class GyartoComparator implements Comparator<Elelmiszer>{
     }
 }
 
-public abstract class Elelmiszer {
+public abstract class Elelmiszer implements Serializable{
     private String nev,gyarto;
  
    private LocalDate datum;
 
     public Elelmiszer(String nev, String gyarto) throws HibasDatumException {
-        this(nev,gyarto,LocalDate.of(2023,05, 17));
+        this(nev,gyarto,LocalDate.now());
     }
     public Elelmiszer(String nev, String gyarto, LocalDate datum) throws HibasDatumException {
         if(datum.isBefore(LocalDate.now())){
